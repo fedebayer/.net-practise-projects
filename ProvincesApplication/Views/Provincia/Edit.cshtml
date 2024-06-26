@@ -1,0 +1,24 @@
+﻿@model MVCApplication.Models.ProvinciaModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <legend>Provincia</legend>
+        @Html.HiddenFor(model => model.Id)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Descripcion)
+            @Html.ValidationMessageFor(model => model.Descripcion)
+        </div>
+        <p>
+            <input type="submit" value="Grabar" />
+        </p>
+    </fieldset>
+}
+
