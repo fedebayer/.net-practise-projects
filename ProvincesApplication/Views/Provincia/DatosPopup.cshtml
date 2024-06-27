@@ -1,0 +1,20 @@
+﻿@model MVCApplication.Models.DatosPopup
+@{
+    ViewBag.Title = "DatosPopup";
+}
+
+<h2>DatosPopup</h2>
+<span class="ui-combobox">
+    @Html.DropDownListFor(x => x.IdTipoTrabajo,
+        new SelectList(@Model.TiposTrabajo, "Id", "Descripcion"),
+        new { @Id = "ddlTiposTrabajo", @class = "ui-autocomplete-input comboBox", })
+    @Html.HiddenFor(x => x.IdTipoTrabajo)
+</span>
+<br />
+@Html.CheckBoxFor(x => x.InSitu)
+<br />
+@Html.CheckBoxFor(x => x.Tercerizado)
+
+@Html.TextBoxFor(x => x.IdTipoTrabajo)
+@Html.ValidationMessageFor(x => x.IdTipoTrabajo)
+
