@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCIntegrador1", "MVCIntegrador1.csproj", "{27B3FDA0-277D-49EE-8C93-E6DCE06B7DAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27B3FDA0-277D-49EE-8C93-E6DCE06B7DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27B3FDA0-277D-49EE-8C93-E6DCE06B7DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27B3FDA0-277D-49EE-8C93-E6DCE06B7DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27B3FDA0-277D-49EE-8C93-E6DCE06B7DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1709F01C-BB3D-48CC-9406-824C54E7B0E1}
+	EndGlobalSection
+EndGlobal
