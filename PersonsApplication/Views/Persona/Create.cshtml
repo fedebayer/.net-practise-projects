@@ -1,0 +1,44 @@
+﻿@model MVCIntegrador1.Models.PersonaModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Crear Persona</h2>
+
+@using (Html.BeginForm("Create", "Persona", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Apellido)
+        @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Apellido)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Edad)
+        @Html.TextBoxFor(model => model.Edad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Edad)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id_tipo_doc)
+        @Html.DropDownListFor(model => model.Id_tipo_doc, (IEnumerable<SelectListItem>)ViewBag.TipoDocumentos, "Seleccione un tipo de documento", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Id_tipo_doc)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nro_doc)
+        @Html.TextBoxFor(model => model.Nro_doc, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nro_doc)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+}
+
