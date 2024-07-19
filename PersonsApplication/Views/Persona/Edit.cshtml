@@ -1,0 +1,46 @@
+﻿@model MVCIntegrador1.Models.PersonaModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("EditPersona", "Persona", FormMethod.Post))
+{
+<fieldset>
+    <legend>Persona</legend>
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Apellido)
+        @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Apellido)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Edad)
+        @Html.TextBoxFor(model => model.Edad, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Edad)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id_tipo_doc)
+        @Html.DropDownListFor(model => model.Id_tipo_doc, (IEnumerable<SelectListItem>)ViewBag.TipoDocumentos, "Seleccione un tipo de documento", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Id_tipo_doc)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nro_doc)
+        @Html.TextBoxFor(model => model.Nro_doc, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nro_doc)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <p>
+        <input type="submit" value="Grabar" class="btn btn-primary"/>
+    </p>
+</fieldset>
+}
+
