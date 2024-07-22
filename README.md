@@ -12,5 +12,6 @@
 ### Objectives
 
 * Achieve knowledge and practise developing MVC apps with front and backend.
+* Achieve knowledge and practise of Entity Framework and Object-Relational Mapping (ORM)
 * Achieve knowledge and practise of MVC, .NET projects.
 * Know and use Software Tools, Visual Studio, Microsoft SQL Server, etc.
