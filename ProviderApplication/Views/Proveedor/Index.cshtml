@@ -1,0 +1,86 @@
+﻿@model IList<MVCIntegrador2.Models.ProveedorModel>
+@{
+    ViewBag.Title = "Index";
+    string Proveedor = Recursos.Global.Proveedor;
+    string Provincia = Recursos.Global.Provincia;
+    string NombreProveedor = Recursos.Global.NombreProveedor;
+    string Localidad = Recursos.Global.Localidad;
+    string Buscar = Recursos.Global.Buscar;
+    string AgregarProveedor = Recursos.Global.AgregarProveedor;
+    string Nombre = Recursos.Global.Nombre;
+    string Domicilio = Recursos.Global.Domicilio;
+    string Eliminar = Recursos.Global.Eliminar;
+    string Guardar = Recursos.Global.Guardar;
+}
+
+<h2>Index of @Proveedor</h2>
+
+<form method="post">
+    <div>
+        <label for="providerName">@NombreProveedor</label>
+        <input type="text" id="providerName" style="margin-right:4rem;" />
+        <label for="province">@Provincia</label>
+        <input type="text" id="province" style="margin-right:1rem;" />
+        <label for="location">@Localidad</label>
+        <input type="text" id="location" style="margin-right:1rem;" />
+    </div>
+
+    <br />
+    <div>
+        <button type="button" id="filterData" style="margin-right:55rem;" class="btn btn-info">@Buscar</button>
+        @Html.ActionLink(@AgregarProveedor, "Edit", new { idProveedor = 0 }, new { @class = "btn btn-primary" })
+    </div>
+</form>
+<br />
+<table class="table table-striped table-hoverable table-bordered">
+    <thead style="background-color: black; color:white;">
+        <tr>
+            <th>ID</th>
+            <th>@Nombre</th>
+            <th>@Domicilio</th>
+            <th> @Provincia</th>
+            <th>@Localidad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Id.ToString(), "Edit", new { idProveedor = item.Id })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Domicilio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Provincia.Provincia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Localidad.Localidad)
+                </td>
+                <td>
+                    @Html.ActionLink("Eliminar", "Delete", new { idProveedor = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#filterData").on("click", function (e) {
+            e.preventDefault();
+
+            var nombre = $("#providerName").val();
+            var provincia = $("#province").val();
+            var localidad = $("#location").val();
+            var url = "@Url.Action("FilterProveedores", "proveedor")?nombre=" + nombre + "&provincia=" + provincia + "&localidad=" + localidad;
+            window.location.href = url;
+        });
+    });
+</script>
