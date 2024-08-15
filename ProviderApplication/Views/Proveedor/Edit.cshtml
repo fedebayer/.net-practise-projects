@@ -1,0 +1,105 @@
+﻿
+@model MVCIntegrador2.Models.ProveedorModel
+@{
+    ViewBag.Title = "Edit";
+    bool isNew = Model.Id <= 0;
+    string Guardar = Recursos.Global.Guardar;
+    string Proveedor = Recursos.Global.Proveedor;
+}
+
+@using (Html.BeginForm(isNew ? "CreateProveedor" : "EditProveedor", "Proveedor", FormMethod.Post))
+{
+<fieldset>
+    <legend>@Proveedor</legend>
+    @if (!isNew)
+    {
+        @Html.HiddenFor(model => model.Id)
+    }
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.TextBoxFor(model => model.Nombre, new { value = isNew ? "" : Model.Nombre, @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Domicilio)
+        @Html.TextBoxFor(model => model.Domicilio, new { value = isNew ? "" : Model.Domicilio, @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Domicilio)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdProvincia)
+        @Html.DropDownListFor(model => model.IdProvincia, (IEnumerable<SelectListItem>)ViewBag.Provincias, "Seleccione una provincia", new { id = "provincias", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.IdProvincia)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdLocalidad)
+        @Html.DropDownListFor(model => model.IdLocalidad, (IEnumerable<SelectListItem>)ViewBag.Localidades, "Seleccione una localidad", new { id = "localidades", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.IdLocalidad)
+    </div>
+    <br />
+    <p>
+        <input type="submit" class="btn btn-primary" value="@Guardar" />
+    </p>
+</fieldset>
+}
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $.ajax(
+            {
+                url: 'provincias',
+                type: 'GET',
+            }
+        ).done(function (data) {
+            $('#provincias').html('');
+            $('#localidades').html('');
+            $.each(data, (i, element) => {
+                $('#provincias').append(
+                    $('<option>', {
+                        value: element.Id,
+                        text: element.Provincia
+                    })
+                )
+            });
+            $.ajax(
+                {
+                    url: '/proveedor/localidades?idProvincia=' + $('#provincias').val(),
+                    type: 'GET',
+                }
+            ).done(function (data) {
+                $.each(data, (i, element) => {
+                    $('#localidades').append(
+                        $('<option>', {
+                            value: element.Id,
+                            text: element.Localidad
+                        })
+                    )
+                });
+            });
+        });
+
+        $('#provincias').on('change', function () {
+            var provinciaId = $(this).val();
+            $('#localidades').html('');
+
+
+            if (provinciaId !== '') {
+                $.ajax({
+                    url: '/proveedor/localidades?idProvincia=' + provinciaId,
+                    type: 'GET',
+                }).done(function (data) {
+                    $.each(data, function (i, element) {
+                        $('#localidades').append(
+                            $('<option>', {
+                                value: element.Id,
+                                text: element.Localidad
+                            })
+                        );
+                    });
+                });
+            }
+
+        });
+
+    </script>
