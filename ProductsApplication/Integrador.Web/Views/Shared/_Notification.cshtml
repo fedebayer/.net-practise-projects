@@ -1,0 +1,9 @@
+﻿<div id="NotificationBoxContainer">
+    @if (TempData["Notification"] != null)
+    {
+        @Html.Hidden("NotificationAutoHide", TempData["NotificationAutoHide"])
+        <div id="NotificationBox" class="@TempData["NotificationCSS"]">
+            @TempData["Notification"]
+        </div>
+    }
+</div>
