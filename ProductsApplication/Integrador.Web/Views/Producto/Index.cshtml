@@ -1,0 +1,105 @@
+﻿<!--FB: Cambie el orden de elementos en el Form 'Consulta' para tener una estetica mas uniforme, poniendo el boton abajo, aumentantando el font-size del panel
+        y alinear los 3 botones del form.
+        Baje la partial view de titulo debajo de la de notifiacion para mejor visualizacion cuando aparezca la notificacion
+        Agregue propiedad for a los LabelFor de descripcion para que apunte a sus correspondientes TextFor y evitar errores en consola
+        Se modifican estilos css inline y se pasan con clases en content/Site.css-->
+
+@using Resources
+@model Integrador.Web.ViewModels.Producto.ProductoViewModel
+@{
+    ViewBag.Title = Global.Producto;
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/Producto/producto.js")"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-xs-1"></div>
+        <div class="col-lg-10 col-md-10 col-xs-10">
+            <div class="row">
+                <div class="col-lg-12" id="notificationBox">
+                </div>
+                <div>
+                    @Html.Partial("_Notification")
+                </div>
+            </div>
+            @Html.Partial("_TituloProducto")
+            <div id="divSearch" class="row panel-div">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="margin-5">
+                            <div id="lblConsulta" class="row label-blue-bold label-panel-title">@Global.Consulta</div>
+                        </div>
+                        <div class="row form-group-filter">
+                            <div class="col-md-3">
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Descripcion, new { @for = "txtDescripcion" })
+                                </div>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Descripcion, new { id = "txtDescripcion", @class = "form-control", filter = "filter" })
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Categoria, new { @for = "txtCategoria" })
+                                </div>
+                                <div class="editor-field">
+                                    @Html.DropDownListFor(model => model.Categoria, (IEnumerable<SelectListItem>)ViewBag.CategoriasDescripcion, "Seleccione una categoria", new { id = "txtCategoria", @class = "form-control", filter = "filter" })
+                                </div>
+                            </div>
+                            <div class="col-md-12 search-filter-div">
+                                <a class="btn btn-default btn-color" id="btnBuscar"><span class="glyphicon glyphicon-search"></span> @Global.Buscar</a>
+                            </div>
+
+                            <div class="col-md-4 option-buttons">
+                                <a class="btn btn-default btn-Codes-style" id="btnLimpiarFiltros"><span class="glyphicon glyphicon-remove"></span> @Global.Limpiar</a>
+                                <a class="btn btn-default btn-Codes-style" id="btnNuevo"><span class="glyphicon glyphicon-plus"></span> @Global.Nuevo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divNewUpdate" class="row panel-div">
+                @Html.HiddenFor(Model => Model.Id, new { id = "hiddenId", @class = "form-control", filter = "filter" })
+                <div class="panel panel-default">
+                    <div class="panel-body panel-body-color">
+                        <div class="margin-5">
+                            <div id="lblModificar" class="row label-blue-bold padding-l-5">@Global.Modificar</div>
+                            <div id="lblNuevo" class="row label-blue-bold label-panel-title">@Global.Nuevo</div>
+                        </div>
+                        <div class="row form-group-filter">
+                            <div class="col-md-3">
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Descripcion, new { @for = "txtDescripcion_NU" })
+                                </div>
+                                <div class="editor-field">
+                                    @Html.TextBoxFor(model => model.Descripcion, new { id = "txtDescripcion_NU", @class = "form-control", filter = "filter" })
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="editor-label">
+                                    @Html.LabelFor(model => model.Categoria, new { @for = "intCategoria_NU" })
+                                </div>
+                                <div class="editor-field">
+                                    @Html.DropDownListFor(model => model.Categoria, (IEnumerable<SelectListItem>)ViewBag.Categorias, "Seleccione una categoria", new { id = "intCategoria_NU", @class = "form-control", filter = "filter" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 option-buttons">
+                                <input id="hdnTipo" type="hidden">
+                                <a class="btn btn-default btn-Codes-style" id="btnAceptar"><span class="glyphicon glyphicon-ok"></span> @Global.Aceptar</a>
+                                <a class="btn btn-default btn-Codes-style" id="btnCancelar"><span class="glyphicon glyphicon-remove"></span> @Global.Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="grillaDiv">
+                    <table id="grilla"></table>
+                    <div id="grillaPaginador">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-xs-1"></div>
+    </div>
+</div>
