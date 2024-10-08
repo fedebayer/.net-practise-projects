@@ -63,3 +63,24 @@ SET IDENTITY_INSERT [dbo].[Suppliers] ON
 INSERT [dbo].[Suppliers] ([SID], [SName], [Phone], [Email], [Address1], [Address2], [Suburb], [State], [Postcode]) VALUES (2, N'LG', N'0425874123', N'LG@yahoo.com', N'50,St.Kilda road', NULL, N'SouthBank', N'VIC', N'3006')
 INSERT [dbo].[Suppliers] ([SID], [SName], [Phone], [Email], [Address1], [Address2], [Suburb], [State], [Postcode]) VALUES (6, N'Breville', N'0425678915', N'Breville@yahoo.com', N'14', N'St.Kilda Road', N'Southbank', N'VIC', N'3006')
 SET IDENTITY_INSERT [dbo].[Suppliers] OFF
+/****** Object:  Table [dbo].[ShoppingCartData]    Script Date: 05/24/2012 12:24:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ShoppingCartData](
+	[TempOrderID] [int] IDENTITY(1,1) NOT NULL,
+	[PID] [int] NOT NULL,
+	[PName] [varchar](50) NOT NULL,
+	[UnitPrice] [money] NOT NULL,
+	[Quantity] [int] NOT NULL,
+ CONSTRAINT [PK_ShoppingCartData] PRIMARY KEY CLUSTERED 
+(
+	[TempOrderID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
