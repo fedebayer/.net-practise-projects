@@ -107,3 +107,11 @@ CREATE TABLE [dbo].[Products](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[Products] ON
+INSERT [dbo].[Products] ([PID], [PName], [Brand], [UnitPrice], [UnitsInStock], [Category], [Description], [SID], [ROL]) VALUES (3, N'Semi Automatic Washing Machine', N'LG', 300.0000, 50, N'Washing Machines', N'LG Semi Automatic Washing Machine', 2, 10)
+INSERT [dbo].[Products] ([PID], [PName], [Brand], [UnitPrice], [UnitsInStock], [Category], [Description], [SID], [ROL]) VALUES (10, N'Breville Electric Kettle', N'Breville', 55.0000, 0, N'Kettles', N'Breville Electric Kettle', 6, 10)
+INSERT [dbo].[Products] ([PID], [PName], [Brand], [UnitPrice], [UnitsInStock], [Category], [Description], [SID], [ROL]) VALUES (12, N'Sunbeam Microwave', N'Sunbeam', 200.0000, 5, N'Microwaves', N'Sunbeam Microwave', 2, 5)
+INSERT [dbo].[Products] ([PID], [PName], [Brand], [UnitPrice], [UnitsInStock], [Category], [Description], [SID], [ROL]) VALUES (15, N'Sunbeam Kettle', N'SunBeam', 45.0000, 0, N'Kettles', N'Sunbeam Kettle', 2, 10)
+SET IDENTITY_INSERT [dbo].[Products] OFF
