@@ -115,3 +115,19 @@ INSERT [dbo].[Products] ([PID], [PName], [Brand], [UnitPrice], [UnitsInStock], [
 INSERT [dbo].[Products] ([PID], [PName], [Brand], [UnitPrice], [UnitsInStock], [Category], [Description], [SID], [ROL]) VALUES (12, N'Sunbeam Microwave', N'Sunbeam', 200.0000, 5, N'Microwaves', N'Sunbeam Microwave', 2, 5)
 INSERT [dbo].[Products] ([PID], [PName], [Brand], [UnitPrice], [UnitsInStock], [Category], [Description], [SID], [ROL]) VALUES (15, N'Sunbeam Kettle', N'SunBeam', 45.0000, 0, N'Kettles', N'Sunbeam Kettle', 2, 10)
 SET IDENTITY_INSERT [dbo].[Products] OFF
+/****** Object:  Table [dbo].[Orders]    Script Date: 10/15/2024 18:24:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Orders](
+	[OrderID] [int] IDENTITY(1,1) NOT NULL,
+	[OrderDate] [datetime] NOT NULL,
+	[DeliveryDate] [datetime] NOT NULL,
+	[CID] [int] NOT NULL,
+ CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
+(
+	[OrderID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
