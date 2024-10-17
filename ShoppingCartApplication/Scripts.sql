@@ -134,3 +134,20 @@ GO
 SET IDENTITY_INSERT [dbo].[Orders] ON
 INSERT [dbo].[Orders] ([OrderID], [OrderDate], [DeliveryDate], [CID]) VALUES (52, CAST(0x0000A05B00B0FB24 AS DateTime), CAST(0x0000A05D00000000 AS DateTime), 47)
 SET IDENTITY_INSERT [dbo].[Orders] OFF
+/****** Object:  Table [dbo].[Order_Products]    Script Date: 10/17/2024 17:24:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order_Products](
+	[OrderID] [int] NOT NULL,
+	[PID] [int] NOT NULL,
+	[Qty] [int] NOT NULL,
+	[TotalSale] [money] NOT NULL,
+ CONSTRAINT [PK_Order_Products] PRIMARY KEY CLUSTERED 
+(
+	[OrderID] ASC,
+	[PID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
