@@ -152,3 +152,11 @@ CREATE TABLE [dbo].[Order_Products](
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[Order_Products] ([OrderID], [PID], [Qty], [TotalSale]) VALUES (52, 12, 1, 200.0000)
+/****** Object:  ForeignKey [FK_Products_Suppliers]    Script Date: 21/10/2024 18:24:33 ******/
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Suppliers] FOREIGN KEY([SID])
+REFERENCES [dbo].[Suppliers] ([SID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Suppliers]
+GO
