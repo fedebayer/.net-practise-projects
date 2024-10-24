@@ -176,3 +176,10 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Order_Products] CHECK CONSTRAINT [FK_Order_Products_Orders]
 GO
+/****** Object:  ForeignKey [FK_Order_Products_Products]    Script Date: 24/10/2012 18:00:33 ******/
+ALTER TABLE [dbo].[Order_Products]  WITH CHECK ADD  CONSTRAINT [FK_Order_Products_Products] FOREIGN KEY([PID])
+REFERENCES [dbo].[Products] ([PID])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [dbo].[Order_Products] CHECK CONSTRAINT [FK_Order_Products_Products]
+GO
